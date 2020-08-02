@@ -2,10 +2,13 @@
   "configurations": [
     {
       "type": "java",
-      "name": "CodeLens (Launch) - DemoApplication",
+      "name": "Spring Boot-DemoApplication<idgenerators>",
       "request": "launch",
-      "mainClass": "znu.practice.springdata.product.DemoApplication",
-      "projectName": "productdata"
+      "cwd": "${workspaceFolder}",
+      "console": "internalConsole",
+      "mainClass": "znu.practice.springdata.productdata.DemoApplication",
+      "projectName": "productdata",
+      "args": ""
     },
     {
       "type": "java",
@@ -13,7 +16,7 @@
       "request": "launch",
       "cwd": "${workspaceFolder}",
       "console": "internalConsole",
-      "mainClass": "znu.practice.springdata.productdata.DemoApplication",
+      "mainClass": "znu.practice.springdata.product.DemoApplication",
       "projectName": "productdata",
       "args": ""
     }

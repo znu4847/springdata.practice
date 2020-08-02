@@ -7,7 +7,9 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import java.util.List;
 import java.util.Optional;
 
-import org.assertj.core.util.Lists;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
+
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -84,6 +86,62 @@ public class ProductRepositoryTest {
 
     // repo.findById(entity.getId());
     // assertEquals(entity.getName(), prd.getName());
+  }
+
+  @Test
+  public void findByName() {
+    List<Product> select = repo.findByName("IWatch");
+    select.forEach(row -> System.out.println(row));
+  }
+
+  @Test
+  public void findByNameAndDesc() {
+    List<Product> select = repo.findByNameAndDesc("TV", " from Samsung Inc");
+    System.out.println(select.size());
+    select.forEach(row -> System.out.println(row));
+  }
+
+  @Test
+  public void findByPriceGreaterThan() {
+    List<Product> select = repo.findByPriceGreaterThan(1000d);
+    System.out.println(select.size());
+    select.forEach(row -> System.out.println(row));
+  }
+
+  @Test
+  public void findByPriceGreaterThanEqual() {
+    List<Product> select = repo.findByPriceGreaterThanEqual(1000d);
+    System.out.println(select.size());
+    select.forEach(row -> System.out.println(row));
+  }
+
+  @Test
+  public void findByNameContains() {
+    List<Product> select = repo.findByDescContains("from");
+    System.out.println(select.size());
+    select.forEach(row -> System.out.println(row));
+  }
+
+  @Test
+  public void findByPriceBetween() {
+    // List<Product> select = repo.findByPriceBetween(1600d, 1300d); <-- not working
+    List<Product> select = repo.findByPriceBetween(1300d, 1600d);
+    System.out.println(select.size());
+    select.forEach(row -> System.out.println(row));
+  }
+
+  @Test
+  public void findByDescLike() {
+    List<Product> select = repo.findByDescLike("%LG%");
+    System.out.println(select.size());
+    select.forEach(row -> System.out.println(row));
+  }
+
+  @Test
+  public void findByIdIn() {
+    List<Product> select = repo.findByIdIn(Sets.newHashSet(14, 15, 16));
+    System.out.println(select.size());
+    select.forEach(row -> System.out.println(row));
   }
 
 }
