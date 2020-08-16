@@ -17,5 +17,26 @@ create table skill_set(
   references character(id)
 );
 
+create table user_class(
+  id serial primary key
+  , name text
+);
+
+create table class_talent(
+  user_class_id bigint
+  , talent_no int
+  , name text
+  , type text
+  , primary key(user_class_id, talent_no)
+  , foreign key (user_class_id)
+  references user_class(id)
+
+);
+
+
+
 select * from character;
 select * from skill_set;
+
+select * from user_class;
+select * from class_talent;
